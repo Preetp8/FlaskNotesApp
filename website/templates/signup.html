@@ -1,0 +1,41 @@
+<!-- to extend the base template -->
+
+{% extends "base.html" %}
+{% block title %}Sign up{% endblock %}
+
+{% block content%}
+
+    <form action="" method="POST">
+        <h3 align="center">Sign Up</h3>
+
+        <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" name="email" id="email" class="form-control" placeholder="Enter email">
+                <!-- define a name and id bc attribute will be called this when info is passed from front to backend -->
+        </div>
+
+        <div class="form-group">
+            <label for="firstName">First Name</label>
+            <input type="text" name="firstName" id="firstName" class="form-control" placeholder="Enter first name">
+                <!-- define a name and id bc attribute will be called this when info is passed from front to backend -->
+        </div>
+
+        <div class="form-group">
+            <label for="password1">Password</label>
+            <input type="password" name="password1" id="password1" class="form-control" placeholder="Enter password">
+                <!-- define a name and id bc attribute will be called this when info is passed from front to backend -->
+        </div>
+
+        <div class="form-group">
+            <label for="password2">Password (confirm)</label>
+            <input type="password" name="password2" id="password2" class="form-control" placeholder="Confirm password">
+                <!-- define a name and id bc attribute will be called this when info is passed from front to backend -->
+        </div>
+
+        <br>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+
+
+    </form>
+{% endblock %}

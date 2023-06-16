@@ -1,0 +1,43 @@
+<!-- to extend the base template -->
+
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+
+{% block content%}
+
+    <h1 align="center">Notes</h1>
+
+
+    <!-- code that genereartees and hsows the notes -->
+    <ul class="list-group list-group-flush" id="notes">
+        <!-- forloop to loop through all of the notes -->
+        {% for note in user.notes %} <!--always pass user to know which notes-->
+            <li class="list-group-item">
+                {{note.data}} <!--text associated witht hte note-->
+
+                <!-- delete -->
+                <button class="close" type="button" onClick="deleteNote({{ note.id }})"> <!-- using js bc there is no form data being sent and only sending requ to backend-->
+                    
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <!--allowing user to create note  -->
+    <form method="POST">
+        <textarea name="note" id="note" class="form-control"></textarea>
+        <br>
+        <div align="center">
+            <button type="submit" class="btn btn-primary">Add Note</button>
+        </div>
+
+    </form>
+
+    <div align="center" style="padding: 10px">
+        <!-- <button type="submit" class="btn btn-primary">view DB</button> -->
+    </div>
+
+
+
+{% endblock %}
