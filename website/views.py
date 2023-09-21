@@ -4,7 +4,7 @@
 
 from flask import Blueprint, render_template, request, flash, jsonify
 from flask_login import login_required, current_user
-from .models import Note
+from .models import Note, User
 from . import db
 import json
 views = Blueprint('views', __name__)
@@ -51,5 +51,8 @@ def delete_note():
             
     return jsonify({}) #reutrn empty response bc view needs a return
 
+@views.route('/see-db')
+@login_required
 def see_db():
-    user.query.all();
+    users = User.query.all()  # fetch all users
+    return render_template('view_users.html', users=users)

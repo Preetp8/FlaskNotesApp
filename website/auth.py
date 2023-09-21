@@ -55,7 +55,7 @@ def sign_up():
         password1 = request.form.get('password1')
         password2 = request.form.get('password2')
 
-        user = User.query.filter_by(email=email).first #GIVES FIRST result user that has this email
+        user = User.query.filter_by(email=email).first() #GIVES FIRST result user that has this email
 
         if user:
             flash('Email already exists', category='error')
@@ -74,8 +74,8 @@ def sign_up():
             # add the user to the db
             db.session.add(new_user)
             db.session.commit()
-            flash("Account created!", category="error")
-            login_user(user, remember=True) #logs in user and remembers that they are logged in until broweser restarted
+            flash("Account created!", category="success")
+            login_user(new_user, remember=True) #logs in user and remembers that they are logged in until broweser restarted
 
             #redirect them to the home page
             return redirect(url_for('views.home')) #views: name of blueprint // home is the name of the page
